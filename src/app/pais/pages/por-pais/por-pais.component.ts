@@ -29,6 +29,8 @@ export class PorPaisComponent {
     }
   }
 
+  
+
   buscar(termino:string) {
     this.termino = termino; 
     this.error_peticion = false;
