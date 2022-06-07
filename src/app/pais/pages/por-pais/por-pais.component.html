@@ -1,1 +1,23 @@
-<p>por-pais works!</p>
+<h2>Por pais</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+       <app-pais-inputs (onEnter)="buscar($event)"
+       (onDebounce)="sugerencias($event)"
+       ></app-pais-inputs>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="error_peticion" class="alert alert-danger">
+    No se encontro el termino {{ termino }}
+</div>
+
+
+<div *ngIf="paises.length > 0" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
