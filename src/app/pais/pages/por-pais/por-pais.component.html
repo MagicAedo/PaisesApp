@@ -3,12 +3,26 @@
 
 <div class="row">
     <div class="col">
-       <app-pais-inputs (onEnter)="buscar($event)"
-       (onDebounce)="sugerencias($event)"
-       placeholder = "Buscar por pais"
-       ></app-pais-inputs>
+        <app-pais-inputs (onEnter)="buscar($event)" (onDebounce)="sugerencias($event)" placeholder="Buscar por pais">
+        </app-pais-inputs>
     </div>
 </div>
+
+<ul *ngIf="mostrarSugerencias" class="list-group">
+    <li [routerLink]="['/pais',pais.cca2]" *ngFor="let pais of paisesSugeridos"
+        class="list-group-item list-group-item-action  ">
+        {{pais.name.common}}
+    </li>
+    <li (click)="buscarSugerencia(termino)" class="list-group-item list-group-item-action  ">
+        Buscar "{{termino}}"
+    </li>
+
+</ul>
+
+
+
+
+
 
 <hr>
 

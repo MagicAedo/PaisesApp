@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams } from '@angular/common/http';
+import { Observable, tap } from 'rxjs';
 import { Country } from '../interfaces/searchingCountrys.interface';
 
 
@@ -35,6 +35,17 @@ export class PaisService {
     `
     return this.http.get<Country[]>(url);
 
+  }
+
+  buscarPorRegion(termino:string):Observable<Country[]>{ 
+    //Se va a optimizar la busqueda estableciendo los parametros unicamente necesarios: 
+
+    // const params = new HttpParams().set('fields','name;cca2;capital;population;flags')
+
+
+    const url:string = `${this.apiUrl}/region/${termino}`
+
+    return this.http.get<Country[]>(url) //{params}  
   }
 
 
